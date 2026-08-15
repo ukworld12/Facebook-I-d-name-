@@ -2,59 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Pro Name Generator</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pro Female Name Generator</title>
 
 <style>
-:root{
-    --bg:#f5f7fb;
-    --card:#fff;
-    --text:#172033;
-    --muted:#718096;
-    --primary:#5b5cf0;
-    --primary2:#7c3aed;
-    --border:#e7eaf0;
-    --success:#16a34a;
-}
-
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
     margin:0;
     min-height:100vh;
     font-family:Arial,Helvetica,sans-serif;
-    color:var(--text);
-
-    background:
-        radial-gradient(
-            circle at top,
-            #e9e9ff 0,
-            #f5f7fb 45%,
-            #f5f7fb 100%
-        );
-
-    transition:
-        background .3s,
-        color .3s;
+    color:#172033;
+    background:radial-gradient(circle at top,#e9e9ff,#f5f7fb 50%);
+    transition:.3s;
 }
 
 body.dark{
-    --bg:#0f1117;
-    --card:#181b24;
-    --text:#f5f7ff;
-    --muted:#a6adbd;
-    --border:#2b3040;
-
-    background:
-        radial-gradient(
-            circle at top,
-            #252044 0,
-            #0f1117 50%,
-            #0f1117 100%
-        );
+    color:#f5f7ff;
+    background:radial-gradient(circle at top,#252044,#0f1117 55%);
 }
 
 .container{
@@ -64,36 +29,21 @@ body.dark{
     padding:24px 15px 40px;
 }
 
-/* HEADER */
-
 .header{
     text-align:center;
-    margin-bottom:24px;
 }
 
 .logo{
     width:66px;
     height:66px;
     margin:auto;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
+    display:grid;
+    place-items:center;
     border-radius:20px;
-    font-size:31px;
-    color:#fff;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--primary2)
-        );
-
-    box-shadow:
-        0 12px 30px
-        rgba(91,92,240,.25);
+    font-size:32px;
+    color:white;
+    background:linear-gradient(135deg,#5b5cf0,#7c3aed);
+    box-shadow:0 12px 30px #5b5cf040;
 }
 
 h1{
@@ -102,62 +52,47 @@ h1{
 }
 
 .subtitle{
-    color:var(--muted);
+    color:#718096;
     font-size:14px;
 }
-
-/* THEME */
 
 .theme-btn{
-    margin-top:14px;
+    margin:14px 0 24px;
     padding:10px 16px;
-
-    border:1px solid var(--border);
+    border:1px solid #e7eaf0;
     border-radius:12px;
-
-    background:var(--card);
-    color:var(--text);
-
-    font-size:14px;
+    background:#fff;
+    color:#172033;
     font-weight:bold;
     cursor:pointer;
-
-    transition:.2s;
 }
 
-.theme-btn:hover{
-    transform:translateY(-1px);
+body.dark .theme-btn{
+    background:#181b24;
+    color:#f5f7ff;
+    border-color:#2b3040;
 }
-
-/* CONTROL */
 
 .control-card{
-    background:rgba(255,255,255,.96);
-
-    border:1px solid var(--border);
-    border-radius:20px;
-
     padding:16px;
-    margin-bottom:18px;
-
-    box-shadow:
-        0 12px 35px
-        rgba(30,40,70,.08);
-
-    transition:.3s;
+    border:1px solid #e7eaf0;
+    border-radius:20px;
+    background:#fff;
+    box-shadow:0 12px 35px #1e284714;
 }
 
-body.dark .control-card{
-    background:rgba(24,27,36,.96);
+body.dark .control-card,
+body.dark .name-card{
+    background:#181b24;
+    border-color:#2b3040;
 }
 
 .label{
     display:block;
     margin-bottom:8px;
-
     font-size:12px;
     font-weight:bold;
-    color:var(--muted);
+    color:#718096;
 }
 
 .control-row{
@@ -168,68 +103,36 @@ body.dark .control-card{
 select{
     flex:1;
     min-width:0;
-
     padding:14px;
-
-    border:1px solid var(--border);
+    border:1px solid #e7eaf0;
     border-radius:13px;
-
-    background:#fff;
+    background:white;
     color:#172033;
-
     font-size:15px;
-    outline:none;
-    cursor:pointer;
 }
 
 body.dark select{
     background:#181b24;
-    color:#fff;
+    color:#f5f7ff;
     border-color:#2b3040;
 }
-
-select:focus{
-    border-color:var(--primary);
-}
-
-/* CHANGE BUTTON */
 
 .change-btn{
     border:0;
     padding:0 18px;
-
     border-radius:13px;
-
-    color:#fff;
+    background:linear-gradient(135deg,#5b5cf0,#7c3aed);
+    color:white;
     font-size:15px;
     font-weight:bold;
-
     cursor:pointer;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--primary2)
-        );
-
-    box-shadow:
-        0 8px 18px
-        rgba(91,92,240,.25);
-
-    transition:.15s;
 }
 
-.change-btn:active{
-    transform:scale(.97);
-}
-
-/* NAMES */
-
-.names-list{
+.names{
     display:flex;
     flex-direction:column;
     gap:11px;
+    margin-top:18px;
 }
 
 .name-card{
@@ -237,22 +140,15 @@ select:focus{
     align-items:center;
     justify-content:space-between;
     gap:12px;
-
     padding:15px;
-
-    background:var(--card);
-
-    border:1px solid var(--border);
+    border:1px solid #e7eaf0;
     border-radius:17px;
-
-    box-shadow:
-        0 7px 22px
-        rgba(30,40,70,.06);
-
-    animation:slideIn .3s ease both;
+    background:#fff;
+    box-shadow:0 7px 22px #1e284710;
+    animation:slide .3s ease both;
 }
 
-.name-left{
+.left{
     display:flex;
     align-items:center;
     gap:12px;
@@ -263,16 +159,11 @@ select:focus{
     width:39px;
     height:39px;
     flex:none;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
+    display:grid;
+    place-items:center;
     border-radius:12px;
-
     background:#f0f1ff;
-    color:var(--primary);
-
+    color:#5b5cf0;
     font-weight:bold;
 }
 
@@ -280,40 +171,27 @@ body.dark .number{
     background:#252440;
 }
 
-.name-info{
-    min-width:0;
-}
-
 .name{
     font-size:16px;
-    font-weight:700;
+    font-weight:bold;
     word-break:break-word;
 }
 
 .country{
     margin-top:4px;
-    color:var(--muted);
+    color:#718096;
     font-size:12px;
 }
 
-/* COPY */
-
 .copy-btn{
     flex:none;
-
     border:1px solid #dfe3ff;
-
     background:#f5f5ff;
-    color:var(--primary);
-
+    color:#5b5cf0;
     padding:9px 13px;
-
     border-radius:10px;
-
     font-weight:bold;
     cursor:pointer;
-
-    transition:.2s;
 }
 
 body.dark .copy-btn{
@@ -322,44 +200,31 @@ body.dark .copy-btn{
     color:#aeb3ff;
 }
 
-.copy-btn:hover{
-    transform:translateY(-1px);
-}
-
 .copy-btn.copied{
     background:#ecfdf3;
     border-color:#bbf7d0;
-    color:var(--success);
+    color:#16a34a;
 }
-
-/* FOOTER */
 
 .footer{
     text-align:center;
     margin-top:20px;
-
-    color:var(--muted);
+    color:#718096;
     font-size:12px;
 }
 
-/* ANIMATION */
-
-@keyframes slideIn{
+@keyframes slide{
     from{
         opacity:0;
         transform:translateY(8px);
     }
-
     to{
         opacity:1;
         transform:translateY(0);
     }
 }
 
-/* MOBILE */
-
 @media(max-width:520px){
-
     .container{
         padding:18px 12px 30px;
     }
@@ -376,14 +241,6 @@ body.dark .copy-btn{
         width:100%;
         padding:13px;
     }
-
-    .name-card{
-        padding:13px;
-    }
-
-    .copy-btn{
-        padding:8px 10px;
-    }
 }
 </style>
 </head>
@@ -392,35 +249,23 @@ body.dark .copy-btn{
 
 <div class="container">
 
-    <!-- HEADER -->
-
     <div class="header">
 
-        <div class="logo">
-            👩
-        </div>
+        <div class="logo">👩</div>
 
-        <h1>
-            Pro Name Generator
-        </h1>
+        <h1>Pro Female Name Generator</h1>
 
         <div class="subtitle">
-            Random female name examples
+            500 name examples for each country
         </div>
 
         <button
             id="themeBtn"
-            class="theme-btn"
-            onclick="toggleTheme()">
-
+            class="theme-btn">
             🌙 Dark Mode
-
         </button>
 
     </div>
-
-
-    <!-- COUNTRY -->
 
     <div class="control-card">
 
@@ -432,704 +277,928 @@ body.dark .copy-btn{
 
             <select id="country">
 
-                <option value="usa">
+                <option value="USA">
                     🇺🇸 USA
                 </option>
 
-                <option value="nigeria">
+                <option value="Nigeria">
                     🇳🇬 Nigeria
                 </option>
 
-                <option value="india">
+                <option value="India">
                     🇮🇳 India
                 </option>
 
-                <option value="pakistan">
+                <option value="Pakistan">
                     🇵🇰 Pakistan
                 </option>
 
-                <option value="southafrica">
+                <option value="South Africa">
                     🇿🇦 South Africa
                 </option>
 
                 <option value="all">
-                    🌍 All Categories
+                    🌍 All 5 Countries
                 </option>
 
             </select>
 
             <button
-                class="change-btn"
-                onclick="generateNames()">
-
+                id="changeBtn"
+                class="change-btn">
                 🔄 Change Names
-
             </button>
 
         </div>
 
     </div>
 
-
-    <!-- NAME LIST -->
-
     <div
         id="names"
-        class="names-list">
+        class="names">
     </div>
 
-
     <div class="footer">
-        5 name examples shown at a time
+        5 random name examples shown at a time
     </div>
 
 </div>
 
-
 <script>
 
-/* =====================================================
-   USA
-===================================================== */
+/* =========================================
+   NAME DATA
+========================================= */
 
-const usaNames = [
+const names = {
 
-    "Emily Carter",
-    "Olivia Bennett",
-    "Emma Collins",
-    "Ava Mitchell",
-    "Sophia Parker",
-    "Isabella Morgan",
-    "Mia Anderson",
-    "Charlotte Brooks",
-    "Amelia Cooper",
-    "Harper Richardson",
-    "Evelyn Turner",
-    "Abigail Foster",
-    "Ella Peterson",
-    "Elizabeth Morgan",
-    "Camila Hayes",
-    "Luna Bennett",
-    "Sofia Reed",
-    "Avery Johnson",
-    "Mila Carter",
-    "Aria Wilson",
-    "Scarlett Davis",
-    "Penelope Clark",
-    "Layla Harris",
-    "Chloe Martin",
-    "Victoria Adams",
-    "Madison Taylor",
-    "Eleanor Walker",
-    "Grace Thompson",
-    "Nora Lewis",
-    "Riley Scott",
-    "Zoey Baker",
-    "Hannah Green",
-    "Hazel Young",
-    "Lily Roberts",
-    "Ellie Stewart",
-    "Violet Moore",
-    "Stella Evans",
-    "Aurora Phillips",
-    "Natalie Collins",
-    "Lucy Parker",
-    "Audrey Edwards",
-    "Bella Mitchell",
-    "Claire Watson",
-    "Skylar Bailey",
-    "Ivy Richardson",
-    "Naomi Brooks",
-    "Elena Carter",
-    "Caroline Morgan",
-    "Ruby Anderson",
-    "Alice Foster",
-    "Sadie Wilson",
-    "Gabriella Turner",
-    "Ariana Davis",
-    "Cora Bennett",
-    "Madelyn Reed",
-    "Samantha Hayes",
-    "Piper Johnson",
-    "Sophie Taylor",
-    "Lydia Walker",
-    "Julia Cooper",
-    "Rose Campbell",
-    "Brianna Harris",
-    "Kaylee Martin",
-    "Isla Thompson",
-    "Mackenzie Clark"
+USA: [
+"Emily Carter",
+"Olivia Bennett",
+"Emma Collins",
+"Ava Mitchell",
+"Sophia Parker",
+"Isabella Morgan",
+"Mia Anderson",
+"Charlotte Brooks",
+"Amelia Cooper",
+"Harper Richardson",
+"Evelyn Turner",
+"Abigail Foster",
+"Ella Peterson",
+"Elizabeth Morgan",
+"Camila Hayes",
+"Luna Bennett",
+"Sofia Reed",
+"Avery Johnson",
+"Mila Carter",
+"Aria Wilson",
+"Scarlett Davis",
+"Penelope Clark",
+"Layla Harris",
+"Chloe Martin",
+"Victoria Adams",
+"Madison Taylor",
+"Eleanor Walker",
+"Grace Thompson",
+"Nora Lewis",
+"Riley Scott",
+"Zoey Baker",
+"Hannah Green",
+"Hazel Young",
+"Lily Roberts",
+"Ellie Stewart",
+"Violet Moore",
+"Stella Evans",
+"Aurora Phillips",
+"Natalie Collins",
+"Lucy Parker",
+"Audrey Edwards",
+"Bella Mitchell",
+"Claire Watson",
+"Skylar Bailey",
+"Ivy Richardson",
+"Naomi Brooks",
+"Elena Carter",
+"Caroline Morgan",
+"Ruby Anderson",
+"Alice Foster",
+"Sadie Wilson",
+"Gabriella Turner",
+"Ariana Davis",
+"Cora Bennett",
+"Madelyn Reed",
+"Samantha Hayes",
+"Piper Johnson",
+"Sophie Taylor",
+"Lydia Walker",
+"Julia Cooper",
+"Rose Campbell",
+"Brianna Harris",
+"Kaylee Martin",
+"Isla Thompson",
+"Mackenzie Clark"
+],
 
-];
+Nigeria: [
+"Aisha Bello",
+"Fatima Abdullahi",
+"Zainab Ibrahim",
+"Maryam Musa",
+"Khadija Umar",
+"Amina Yusuf",
+"Hauwa Mohammed",
+"Hadiza Sani",
+"Asma'u Aliyu",
+"Rukayya Usman",
+"Hajara Musa",
+"Safiya Ibrahim",
+"Asiya Sani",
+"Halima Yusuf",
+"Maimuna Bello",
+"Rahma Mohammed",
+"Sadiya Umar",
+"Nafisa Aliyu",
+"Kemi Adeyemi",
+"Funmi Adebayo",
+"Yetunde Balogun",
+"Folake Ogunleye",
+"Temitope Adebayo",
+"Abiola Adewale",
+"Adesewa Bello",
+"Simisola Akinyemi",
+"Eniola Oladipo",
+"Damilola Adebayo",
+"Bukola Adebayo",
+"Bisola Adeyemi",
+"Folashade Balogun",
+"Aderonke Ogunleye",
+"Abimbola Adewale",
+"Oluwakemi Bello",
+"Oluwatosin Adebayo",
+"Oluwaseun Johnson",
+"Titilayo Akinyemi",
+"Tolulope Adeyemi",
+"Chioma Okafor",
+"Chidinma Obi",
+"Ifeoma Okeke",
+"Nneka Eze",
+"Adaeze Nwosu",
+"Amaka Chukwu",
+"Ijeoma Okoro",
+"Chiamaka Eze",
+"Chisom Nwosu",
+"Ngozi Okafor",
+"Amarachi Okafor",
+"Anulika Nwosu",
+"Nneoma Okeke",
+"Onyinye Obi",
+"Ugochi Nnamani",
+"Adaora Eze",
+"Ebere Chukwu",
+"Ihuoma Obi",
+"Nkiruka Eze",
+"Blessing Okoro",
+"Esther Eze",
+"Peace Nwosu",
+"Joy Obi",
+"Faith Okafor",
+"Grace Chukwu",
+"Mercy Okeke",
+"Precious Nnamani",
+"Favour Eze",
+"Patience Nwosu"
+],
 
+India: [
+"Aanya Sharma",
+"Aadhya Patel",
+"Aaradhya Singh",
+"Ananya Mehta",
+"Anika Kapoor",
+"Anvi Sharma",
+"Aisha Khan",
+"Diya Verma",
+"Ishita Patel",
+"Isha Gupta",
+"Kavya Reddy",
+"Kiara Mehta",
+"Kriti Sharma",
+"Meera Nair",
+"Myra Kapoor",
+"Nisha Verma",
+"Navya Singh",
+"Pari Patel",
+"Pihu Sharma",
+"Riya Gupta",
+"Saanvi Mehta",
+"Saisha Kapoor",
+"Shanaya Singh",
+"Shreya Patel",
+"Siya Sharma",
+"Tara Nair",
+"Trisha Verma",
+"Vanya Kapoor",
+"Zoya Khan",
+"Aditi Mehta",
+"Alisha Sharma",
+"Anjali Patel",
+"Anushka Singh",
+"Avni Gupta",
+"Bhavya Reddy",
+"Charvi Mehta",
+"Devika Nair",
+"Dhriti Sharma",
+"Disha Patel",
+"Esha Kapoor",
+"Ira Singh",
+"Ishani Gupta",
+"Jhanvi Mehta",
+"Kaira Sharma",
+"Kajal Patel",
+"Kalyani Nair",
+"Kashish Kapoor",
+"Khushi Singh",
+"Komal Sharma",
+"Lavanya Reddy",
+"Mahika Patel",
+"Mahi Gupta",
+"Manisha Sharma",
+"Manya Kapoor",
+"Mira Nair",
+"Muskan Verma",
+"Nandini Singh",
+"Navika Mehta",
+"Neha Sharma",
+"Niharika Patel",
+"Palak Gupta",
+"Prisha Kapoor",
+"Radhika Sharma",
+"Raina Mehta",
+"Rashi Patel",
+"Rhea Singh",
+"Riddhi Gupta",
+"Roshni Nair",
+"Samaira Kapoor",
+"Samiksha Sharma",
+"Sana Khan",
+"Sanya Patel",
+"Shivani Singh",
+"Shruti Mehta",
+"Simran Kaur",
+"Sneha Sharma",
+"Sonakshi Patel",
+"Tanisha Gupta",
+"Tanya Kapoor",
+"Tia Mehta",
+"Urvi Shah",
+"Vaishnavi Reddy",
+"Vidhi Patel",
+"Yashvi Sharma"
+],
 
-/* =====================================================
-   NIGERIA
-   Common Nigerian female name examples.
-   These are examples, not verified identities.
-===================================================== */
+Pakistan: [
+"Ayesha Khan",
+"Fatima Ahmed",
+"Maryam Ali",
+"Mariam Hussain",
+"Zainab Malik",
+"Hafsa Shah",
+"Khadija Ahmed",
+"Ruqayya Khan",
+"Safiya Malik",
+"Sumayya Hussain",
+"Sana Ahmed",
+"Huda Ali",
+"Noor Khan",
+"Noura Shah",
+"Nadia Malik",
+"Salma Ahmed",
+"Amira Khan",
+"Amina Hussain",
+"Aminah Ali",
+"Inaya Khan",
+"Anaya Malik",
+"Anisa Ahmed",
+"Zara Shah",
+"Zahra Khan",
+"Hania Malik",
+"Haniya Hussain",
+"Hiba Ahmed",
+"Maha Khan",
+"Maira Ali",
+"Mahira Shah",
+"Mehwish Malik",
+"Mehreen Ahmed",
+"Nimra Khan",
+"Nida Hussain",
+"Sadia Ali",
+"Saba Malik",
+"Sahar Ahmed",
+"Samira Khan",
+"Saira Shah",
+"Seher Malik",
+"Shazia Ahmed",
+"Rabia Khan",
+"Rabiya Ali",
+"Rania Malik",
+"Rida Hussain",
+"Rimsha Khan",
+"Tasneem Ahmed",
+"Tasnim Ali",
+"Tehmina Shah",
+"Uzma Malik",
+"Yasmin Khan",
+"Yasmeen Ahmed",
+"Zoya Ali",
+"Zunaira Malik",
+"Aleena Khan",
+"Alina Ahmed",
+"Aliza Shah",
+"Arisha Malik",
+"Areeba Khan",
+"Arooba Ali",
+"Eman Ahmed",
+"Emaan Hussain",
+"Fariha Khan",
+"Farah Malik",
+"Fiza Ahmed",
+"Hoor Khan",
+"Hoorain Ali",
+"Iqra Shah",
+"Isra Malik",
+"Kainat Ahmed",
+"Laiba Khan",
+"Lubna Ali",
+"Maham Malik",
+"Malika Hussain",
+"Mishal Khan",
+"Muneeba Ahmed",
+"Muskan Ali",
+"Nawal Shah",
+"Rameen Malik",
+"Ramsha Khan",
+"Shifa Ahmed",
+"Sidra Ali",
+"Tuba Khan",
+"Warda Malik",
+"Yumna Hussain",
+"Aqsa Ahmed",
+"Bushra Khan",
+"Dua Ali",
+"Areesha Malik",
+"Ayla Ahmed",
+"Eshal Khan",
+"Minal Shah",
+"Minahil Ali",
+"Mahnoor Malik",
+"Noorain Ahmed",
+"Anum Khan",
+"Aiman Ali",
+"Areej Shah",
+"Amna Malik",
+"Hira Ahmed"
+],
 
-const nigeriaNames = [
+"South Africa": [
+"Ayanda Mokoena",
+"Buhle Dlamini",
+"Busisiwe Nkosi",
+"Candice Naidoo",
+"Carmen Jacobs",
+"Chantelle Daniels",
+"Danielle Williams",
+"Dineo Mokoena",
+"Faith Ndlovu",
+"Karabo Molefe",
+"Katlego Mokoena",
+"Kea Khumalo",
+"Keisha Daniels",
+"Kerry Naidoo",
+"Lerato Mokoena",
+"Lesedi Dlamini",
+"Lindiwe Nkosi",
+"Lungile Ndlovu",
+"Makena Molefe",
+"Masego Mokoena",
+"Mpho Dlamini",
+"Naledi Nkosi",
+"Nandi Mthembu",
+"Nomsa Ndlovu",
+"Nosipho Khumalo",
+"Ntombi Mokoena",
+"Onthatile Molefe",
+"Palesa Dlamini",
+"Precious Nkosi",
+"Refilwe Ndlovu",
+"Rethabile Mokoena",
+"Sibongile Dlamini",
+"Sindi Nkosi",
+"Simphiwe Ndlovu",
+"Thandi Mokoena",
+"Thandeka Dlamini",
+"Thandiwe Nkosi",
+"Thembeka Ndlovu",
+"Tshegofatso Molefe",
+"Wendy Naidoo",
+"Zanele Mokoena",
+"Zinhle Dlamini",
+"Zodwa Nkosi",
+"Nokuthula Ndlovu",
+"Nokwazi Khumalo",
+"Nompumelelo Mokoena",
+"Nonhlanhla Dlamini",
+"Phumzile Nkosi",
+"Portia Naidoo",
+"Sinethemba Ndlovu",
+"Slindile Mokoena",
+"Thobeka Dlamini",
+"Vuyiswa Nkosi",
+"Yolanda Jacobs",
+"Zandile Mthembu",
+"Anele Mokoena",
+"Boniswa Dlamini",
+"Cleo Naidoo",
+"Danica Williams",
+"Kayla Jacobs",
+"Lethabo Mokoena",
+"Lihle Dlamini",
+"Luyanda Nkosi",
+"Mbalenhle Ndlovu",
+"Minenhle Mokoena",
+"Nokwanda Dlamini",
+"Noxolo Nkosi",
+"Olwethu Ndlovu",
+"Phumla Mokoena",
+"Sanelisiwe Dlamini",
+"Zama Nkosi",
+"Zimasa Mthembu",
+"Zintle Naidoo"
+]
 
-    /* Hausa / Fulani / Muslim */
-
-    "Aisha Bello",
-    "Fatima Abdullahi",
-    "Zainab Ibrahim",
-    "Maryam Musa",
-    "Khadija Umar",
-    "Amina Yusuf",
-    "Hauwa Mohammed",
-    "Hadiza Sani",
-    "Asma'u Aliyu",
-    "Rukayya Usman",
-    "Hajara Musa",
-    "Safiya Ibrahim",
-    "Asiya Sani",
-    "Halima Yusuf",
-    "Maimuna Bello",
-    "Rahma Mohammed",
-    "Sadiya Umar",
-    "Nafisa Aliyu",
-    "Khadija Ibrahim",
-    "Amina Abdullahi",
-
-    /* Yoruba */
-
-    "Kemi Adeyemi",
-    "Funmi Adebayo",
-    "Yetunde Balogun",
-    "Folake Ogunleye",
-    "Temitope Adebayo",
-    "Abiola Adewale",
-    "Adesewa Bello",
-    "Simisola Akinyemi",
-    "Eniola Oladipo",
-    "Damilola Adebayo",
-    "Bukola Adebayo",
-    "Bisola Adeyemi",
-    "Folashade Balogun",
-    "Aderonke Ogunleye",
-    "Abimbola Adewale",
-    "Oluwakemi Bello",
-    "Oluwatosin Adebayo",
-    "Oluwaseun Johnson",
-    "Titilayo Akinyemi",
-    "Tolulope Adeyemi",
-
-    /* Igbo */
-
-    "Chioma Okafor",
-    "Chidinma Obi",
-    "Ifeoma Okeke",
-    "Nneka Eze",
-    "Adaeze Nwosu",
-    "Amaka Chukwu",
-    "Ijeoma Okoro",
-    "Chiamaka Eze",
-    "Chisom Nwosu",
-    "Ngozi Okafor",
-    "Amarachi Okafor",
-    "Anulika Nwosu",
-    "Nneoma Okeke",
-    "Onyinye Obi",
-    "Ugochi Nnamani",
-    "Adaora Eze",
-    "Ebere Chukwu",
-    "Ihuoma Obi",
-    "Nkiruka Eze",
-    "Anita Okoro",
-
-    /* Other commonly used Nigerian names */
-
-    "Blessing Okoro",
-    "Esther Eze",
-    "Peace Nwosu",
-    "Joy Obi",
-    "Faith Okafor",
-    "Grace Chukwu",
-    "Mercy Okeke",
-    "Precious Nnamani",
-    "Favour Eze",
-    "Patience Nwosu"
-
-];
-
-
-/* =====================================================
-   INDIA
-===================================================== */
-
-const indiaNames = [
-
-    "Aanya Sharma",
-    "Aadhya Patel",
-    "Aaradhya Singh",
-    "Ananya Mehta",
-    "Anika Kapoor",
-    "Anvi Sharma",
-    "Aisha Khan",
-    "Diya Verma",
-    "Ishita Patel",
-    "Isha Gupta",
-    "Kavya Reddy",
-    "Kiara Mehta",
-    "Kriti Sharma",
-    "Meera Nair",
-    "Myra Kapoor",
-    "Nisha Verma",
-    "Navya Singh",
-    "Pari Patel",
-    "Pihu Sharma",
-    "Riya Gupta",
-    "Saanvi Mehta",
-    "Saisha Kapoor",
-    "Shanaya Singh",
-    "Shreya Patel",
-    "Siya Sharma",
-    "Tara Nair",
-    "Trisha Verma",
-    "Vanya Kapoor",
-    "Zoya Khan",
-    "Aditi Mehta",
-    "Alisha Sharma",
-    "Anjali Patel",
-    "Anushka Singh",
-    "Avni Gupta",
-    "Bhavya Reddy",
-    "Charvi Mehta",
-    "Devika Nair",
-    "Dhriti Sharma",
-    "Disha Patel",
-    "Esha Kapoor",
-    "Ira Singh",
-    "Ishani Gupta",
-    "Jhanvi Mehta",
-    "Kaira Sharma",
-    "Kajal Patel",
-    "Kalyani Nair",
-    "Kashish Kapoor",
-    "Khushi Singh",
-    "Komal Sharma",
-    "Lavanya Reddy",
-    "Mahika Patel",
-    "Mahi Gupta",
-    "Manisha Sharma",
-    "Manya Kapoor",
-    "Mira Nair",
-    "Muskan Verma",
-    "Nandini Singh",
-    "Navika Mehta",
-    "Neha Sharma",
-    "Niharika Patel",
-    "Palak Gupta",
-    "Prisha Kapoor",
-    "Radhika Sharma",
-    "Raina Mehta",
-    "Rashi Patel",
-    "Rhea Singh",
-    "Riddhi Gupta",
-    "Roshni Nair",
-    "Samaira Kapoor",
-    "Samiksha Sharma",
-    "Sana Khan",
-    "Sanya Patel",
-    "Shivani Singh",
-    "Shruti Mehta",
-    "Simran Kaur",
-    "Sneha Sharma",
-    "Sonakshi Patel",
-    "Tanisha Gupta",
-    "Tanya Kapoor",
-    "Tia Mehta",
-    "Urvi Shah",
-    "Vaishnavi Reddy",
-    "Vidhi Patel",
-    "Yashvi Sharma"
-
-];
-
-
-/* =====================================================
-   PAKISTAN
-===================================================== */
-
-const pakistanNames = [
-
-    "Ayesha Khan",
-    "Fatima Ahmed",
-    "Maryam Ali",
-    "Mariam Hussain",
-    "Zainab Malik",
-    "Hafsa Shah",
-    "Khadija Ahmed",
-    "Ruqayya Khan",
-    "Safiya Malik",
-    "Sumayya Hussain",
-    "Sana Ahmed",
-    "Huda Ali",
-    "Noor Khan",
-    "Noura Shah",
-    "Nadia Malik",
-    "Salma Ahmed",
-    "Amira Khan",
-    "Amina Hussain",
-    "Aminah Ali",
-    "Inaya Khan",
-    "Anaya Malik",
-    "Anisa Ahmed",
-    "Zara Shah",
-    "Zahra Khan",
-    "Hania Malik",
-    "Haniya Hussain",
-    "Hiba Ahmed",
-    "Maha Khan",
-    "Maira Ali",
-    "Mahira Shah",
-    "Mehwish Malik",
-    "Mehreen Ahmed",
-    "Nimra Khan",
-    "Nida Hussain",
-    "Sadia Ali",
-    "Saba Malik",
-    "Sahar Ahmed",
-    "Samira Khan",
-    "Saira Shah",
-    "Seher Malik",
-    "Shazia Ahmed",
-    "Rabia Khan",
-    "Rabiya Ali",
-    "Rania Malik",
-    "Rida Hussain",
-    "Rimsha Khan",
-    "Tasneem Ahmed",
-    "Tasnim Ali",
-    "Tehmina Shah",
-    "Uzma Malik",
-    "Yasmin Khan",
-    "Yasmeen Ahmed",
-    "Zoya Ali",
-    "Zunaira Malik",
-    "Aleena Khan",
-    "Alina Ahmed",
-    "Aliza Shah",
-    "Arisha Malik",
-    "Areeba Khan",
-    "Arooba Ali",
-    "Eman Ahmed",
-    "Emaan Hussain",
-    "Fariha Khan",
-    "Farah Malik",
-    "Fiza Ahmed",
-    "Hoor Khan",
-    "Hoorain Ali",
-    "Iqra Shah",
-    "Isra Malik",
-    "Kainat Ahmed",
-    "Laiba Khan",
-    "Lubna Ali",
-    "Maham Malik",
-    "Malika Hussain",
-    "Mishal Khan",
-    "Muneeba Ahmed",
-    "Muskan Ali",
-    "Nawal Shah",
-    "Rameen Malik",
-    "Ramsha Khan",
-    "Shifa Ahmed",
-    "Sidra Ali",
-    "Tuba Khan",
-    "Warda Malik",
-    "Yumna Hussain",
-    "Aqsa Ahmed",
-    "Bushra Khan",
-    "Dua Ali",
-    "Areesha Malik",
-    "Ayla Ahmed",
-    "Eshal Khan",
-    "Minal Shah",
-    "Minahil Ali",
-    "Mahnoor Malik",
-    "Noorain Ahmed",
-    "Anum Khan",
-    "Aiman Ali",
-    "Areej Shah",
-    "Amna Malik",
-    "Hira Ahmed"
-
-];
-
-
-/* =====================================================
-   SOUTH AFRICA
-===================================================== */
-
-const southAfricaNames = [
-
-    "Ayanda Mokoena",
-    "Buhle Dlamini",
-    "Busisiwe Nkosi",
-    "Candice Naidoo",
-    "Carmen Jacobs",
-    "Chantelle Daniels",
-    "Danielle Williams",
-    "Dineo Mokoena",
-    "Faith Ndlovu",
-    "Karabo Molefe",
-    "Katlego Mokoena",
-    "Kea Khumalo",
-    "Keisha Daniels",
-    "Kerry Naidoo",
-    "Lerato Mokoena",
-    "Lesedi Dlamini",
-    "Lindiwe Nkosi",
-    "Lungile Ndlovu",
-    "Makena Molefe",
-    "Masego Mokoena",
-    "Mpho Dlamini",
-    "Naledi Nkosi",
-    "Nandi Mthembu",
-    "Nomsa Ndlovu",
-    "Nosipho Khumalo",
-    "Ntombi Mokoena",
-    "Onthatile Molefe",
-    "Palesa Dlamini",
-    "Precious Nkosi",
-    "Refilwe Ndlovu",
-    "Rethabile Mokoena",
-    "Sibongile Dlamini",
-    "Sindi Nkosi",
-    "Simphiwe Ndlovu",
-    "Thandi Mokoena",
-    "Thandeka Dlamini",
-    "Thandiwe Nkosi",
-    "Thembeka Ndlovu",
-    "Tshegofatso Molefe",
-    "Wendy Naidoo",
-    "Zanele Mokoena",
-    "Zinhle Dlamini",
-    "Zodwa Nkosi",
-    "Nokuthula Ndlovu",
-    "Nokwazi Khumalo",
-    "Nompumelelo Mokoena",
-    "Nonhlanhla Dlamini",
-    "Phumzile Nkosi",
-    "Portia Naidoo",
-    "Sinethemba Ndlovu",
-    "Slindile Mokoena",
-    "Thobeka Dlamini",
-    "Vuyiswa Nkosi",
-    "Yolanda Jacobs",
-    "Zandile Mthembu",
-    "Anele Mokoena",
-    "Boniswa Dlamini",
-    "Cleo Naidoo",
-    "Danica Williams",
-    "Kayla Jacobs",
-    "Lethabo Mokoena",
-    "Lihle Dlamini",
-    "Luyanda Nkosi",
-    "Mbalenhle Ndlovu",
-    "Minenhle Mokoena",
-    "Nokwanda Dlamini",
-    "Noxolo Nkosi",
-    "Olwethu Ndlovu",
-    "Phumla Mokoena",
-    "Sanelisiwe Dlamini",
-    "Zama Nkosi",
-    "Zimasa Mthembu",
-    "Zintle Naidoo"
-
-];
+};
 
 
-/* =====================================================
-   ALL COUNTRIES
-===================================================== */
+/* =========================================
+   COUNTRY LABELS
+========================================= */
 
-const allNames = [
-    ...usaNames,
-    ...nigeriaNames,
-    ...indiaNames,
-    ...pakistanNames,
-    ...southAfricaNames
-];
+const labels = {
+
+    USA:"🇺🇸 USA",
+
+    Nigeria:"🇳🇬 Nigeria",
+
+    India:"🇮🇳 India",
+
+    Pakistan:"🇵🇰 Pakistan",
+
+    "South Africa":"🇿🇦 South Africa"
+
+};
 
 
-/* =====================================================
-   RANDOM ITEM
-===================================================== */
+/* =========================================
+   GENERATE EXTRA COMBINATIONS
+   UNTIL EACH COUNTRY HAS 500 EXAMPLES
+========================================= */
 
-function randomItem(array){
+const pools = {
 
-    return array[
-        Math.floor(
-            Math.random() * array.length
-        )
-    ];
+USA:{
+first:[
+"Emily","Olivia","Emma","Ava","Sophia",
+"Isabella","Mia","Charlotte","Amelia",
+"Harper","Evelyn","Abigail","Ella","Camila",
+"Luna","Sofia","Avery","Mila","Aria",
+"Scarlett","Penelope","Layla","Chloe",
+"Victoria","Madison","Eleanor","Grace",
+"Nora","Riley","Zoey","Hannah","Hazel",
+"Lily","Ellie","Violet","Stella","Aurora",
+"Natalie","Lucy","Audrey","Bella","Claire",
+"Skylar","Ivy","Naomi","Elena","Caroline",
+"Ruby","Alice","Sadie"
+],
+last:[
+"Carter","Bennett","Collins","Mitchell",
+"Parker","Morgan","Anderson","Brooks",
+"Cooper","Richardson","Turner","Foster",
+"Peterson","Hayes","Reed","Johnson",
+"Wilson","Davis","Clark","Harris",
+"Martin","Adams","Taylor","Walker",
+"Thompson","Lewis","Scott","Baker",
+"Green","Young"
+]
+},
+
+Nigeria:{
+first:[
+"Aisha","Fatima","Zainab","Maryam","Khadija",
+"Amina","Hauwa","Hadiza","Asma'u","Rukayya",
+"Hajara","Safiya","Asiya","Halima","Maimuna",
+"Rahma","Sadiya","Nafisa","Kemi","Funmi",
+"Yetunde","Folake","Temitope","Abiola",
+"Adesewa","Simisola","Eniola","Damilola",
+"Bukola","Bisola","Folashade","Aderonke",
+"Abimbola","Oluwakemi","Oluwatosin","Oluwaseun",
+"Titilayo","Tolulope","Chioma","Chidinma",
+"Ifeoma","Nneka","Adaeze","Amaka","Ijeoma",
+"Chiamaka","Chisom","Ngozi","Amarachi",
+"Anulika","Nneoma","Onyinye","Ugochi",
+"Adaora","Ebere","Ihuoma","Nkiruka",
+"Blessing","Esther","Peace","Joy","Faith",
+"Grace","Mercy","Precious","Favour","Patience"
+],
+last:[
+"Bello","Abdullahi","Ibrahim","Musa","Umar",
+"Yusuf","Mohammed","Sani","Aliyu","Usman",
+"Adeyemi","Adebayo","Balogun","Ogunleye",
+"Adewale","Akinyemi","Oladipo","Okafor",
+"Obi","Okeke","Eze","Nwosu","Chukwu",
+"Okoro","Nnamani","Adebisi","Johnson"
+]
+},
+
+India:{
+first:[
+"Aanya","Aadhya","Aaradhya","Ananya","Anika",
+"Anvi","Aisha","Diya","Ishita","Isha",
+"Kavya","Kiara","Kriti","Meera","Myra",
+"Nisha","Navya","Pari","Pihu","Riya",
+"Saanvi","Saisha","Shanaya","Shreya","Siya",
+"Tara","Trisha","Vanya","Zoya","Aditi",
+"Alisha","Anjali","Anushka","Avni","Bhavya",
+"Charvi","Devika","Dhriti","Disha","Esha",
+"Ira","Ishani","Jhanvi","Kaira","Kajal",
+"Kalyani","Kashish","Khushi","Komal","Lavanya",
+"Mahika","Mahi","Manisha","Manya","Mira",
+"Muskan","Nandini","Navika","Neha","Niharika",
+"Palak","Prisha","Radhika","Raina","Rashi",
+"Rhea","Riddhi","Roshni","Samaira","Samiksha",
+"Sana","Sanya","Shivani","Shruti","Simran",
+"Sneha","Sonakshi","Tanisha","Tanya","Tia",
+"Urvi","Vaishnavi","Vidhi","Yashvi"
+],
+last:[
+"Sharma","Patel","Singh","Mehta","Kapoor",
+"Verma","Gupta","Reddy","Nair","Khan",
+"Shah","Joshi","Rao","Iyer","Malhotra",
+"Desai","Chopra","Bose","Menon","Sinha"
+]
+},
+
+Pakistan:{
+first:[
+"Ayesha","Fatima","Maryam","Mariam","Zainab",
+"Hafsa","Khadija","Ruqayya","Safiya","Sumayya",
+"Sana","Huda","Noor","Noura","Nadia",
+"Salma","Amira","Amina","Aminah","Inaya",
+"Anaya","Anisa","Zara","Zahra","Hania",
+"Haniya","Hiba","Maha","Maira","Mahira",
+"Mehwish","Mehreen","Nimra","Nida","Sadia",
+"Saba","Sahar","Samira","Saira","Seher",
+"Shazia","Rabia","Rabiya","Rania","Rida",
+"Rimsha","Tasneem","Tasnim","Tehmina","Uzma",
+"Yasmin","Yasmeen","Zoya","Zunaira","Aleena",
+"Alina","Aliza","Arisha","Areeba","Arooba",
+"Eman","Emaan","Fariha","Farah","Fiza",
+"Hoor","Hoorain","Iqra","Isra","Kainat",
+"Laiba","Lubna","Maham","Malika","Mishal",
+"Muneeba","Muskan","Nawal","Rameen","Ramsha",
+"Shifa","Sidra","Tuba","Warda","Yumna",
+"Aqsa","Bushra","Dua","Areesha","Ayla",
+"Eshal","Minal","Minahil","Mahnoor","Noorain",
+"Anum","Aiman","Areej","Amna","Hira"
+],
+last:[
+"Khan","Ahmed","Ali","Hussain","Malik","Shah",
+"Syed","Qureshi","Sheikh","Butt","Raza",
+"Iqbal","Siddiqui","Javed","Farooq","Akhtar",
+"Aslam","Haider","Rashid","Nawaz"
+]
+},
+
+"South Africa":{
+first:[
+"Ayanda","Buhle","Busisiwe","Candice","Carmen",
+"Chantelle","Danielle","Dineo","Faith","Karabo",
+"Katlego","Kea","Keisha","Kerry","Lerato",
+"Lesedi","Lindiwe","Lungile","Makena","Masego",
+"Mpho","Naledi","Nandi","Nomsa","Nosipho",
+"Ntombi","Onthatile","Palesa","Precious","Refilwe",
+"Rethabile","Sibongile","Sindi","Simphiwe",
+"Thandi","Thandeka","Thandiwe","Thembeka",
+"Tshegofatso","Wendy","Zanele","Zinhle","Zodwa",
+"Nokuthula","Nokwazi","Nompumelelo","Nonhlanhla",
+"Phumzile","Portia","Sinethemba","Slindile",
+"Thobeka","Vuyiswa","Yolanda","Zandile","Anele",
+"Boniswa","Cleo","Danica","Kayla","Lethabo",
+"Lihle","Luyanda","Mbalenhle","Minenhle","Nokwanda",
+"Noxolo","Olwethu","Phumla","Sanelisiwe","Zama",
+"Zimasa","Zintle"
+],
+last:[
+"Mokoena","Dlamini","Nkosi","Naidoo","Jacobs",
+"Daniels","Williams","Ndlovu","Molefe","Khumalo",
+"Mthembu","Mthethwa","Mahlangu","Sithole","Zulu",
+"Mabena","Cele","Mkhize","Ngcobo"
+]
+
+}
+
+};
+
+
+/* =========================================
+   MAKE EACH COUNTRY 500 NAMES
+========================================= */
+
+function expandNames(country){
+
+    const list=names[country];
+
+    const first=pools[country].first;
+    const last=pools[country].last;
+
+    const used=new Set(list);
+
+    for(let f of first){
+
+        for(let l of last){
+
+            const full=f+" "+l;
+
+            if(!used.has(full)){
+
+                list.push(full);
+
+                used.add(full);
+
+            }
+
+            if(list.length>=500){
+
+                return;
+
+            }
+
+        }
+
+    }
 
 }
 
 
-/* =====================================================
-   GET 5 UNIQUE NAMES
-===================================================== */
+/* Expand */
 
-function getFiveUnique(pool){
+expandNames("USA");
+expandNames("Nigeria");
+expandNames("India");
+expandNames("Pakistan");
+expandNames("South Africa");
 
-    const selected = new Set();
+
+/* =========================================
+   RANDOM
+========================================= */
+
+function randomFive(array){
+
+    const copy=[...array];
+
+    const result=[];
 
     while(
-        selected.size < 5 &&
-        selected.size < pool.length
+        result.length<5 &&
+        copy.length>0
     ){
 
-        selected.add(
-            randomItem(pool)
+        const index=
+            Math.floor(
+                Math.random()*copy.length
+            );
+
+        result.push(
+            copy.splice(index,1)[0]
         );
 
     }
 
-    return [...selected];
+    return result;
 
 }
 
 
-/* =====================================================
+/* =========================================
    GENERATE
-===================================================== */
+========================================= */
 
 function generateNames(){
 
-    const type =
-        document.getElementById("country").value;
+    const selected=
+        document.getElementById(
+            "country"
+        ).value;
 
-    let pool;
-    let label;
+    let pool=[];
 
-
-    switch(type){
-
-        case "usa":
-
-            pool = usaNames;
-            label = "🇺🇸 USA";
-
-            break;
+    let label="";
 
 
-        case "nigeria":
+    if(selected==="all"){
 
-            pool = nigeriaNames;
-            label = "🇳🇬 Nigeria";
+        Object.keys(names).forEach(
+            country=>{
 
-            break;
+                pool.push(
+                    ...names[country]
+                );
 
+            }
+        );
 
-        case "india":
+        label="🌍 All 5 Countries";
 
-            pool = indiaNames;
-            label = "🇮🇳 India";
+    }
 
-            break;
+    else{
 
+        pool=names[selected]||[];
 
-        case "pakistan":
-
-            pool = pakistanNames;
-            label = "🇵🇰 Pakistan";
-
-            break;
-
-
-        case "southafrica":
-
-            pool = southAfricaNames;
-            label = "🇿🇦 South Africa";
-
-            break;
-
-
-        default:
-
-            pool = allNames;
-            label = "🌍 All Categories";
+        label=
+            labels[selected];
 
     }
 
 
-    const selected =
-        getFiveUnique(pool);
+    const container=
+        document.getElementById(
+            "names"
+        );
+
+    container.innerHTML="";
 
 
-    const container =
-        document.getElementById("names");
-
-
-    container.innerHTML = "";
-
-
-    selected.forEach(
+    randomFive(pool).forEach(
         (name,index)=>{
 
-            const card =
-                document.createElement("div");
+            const card=
+                document.createElement(
+                    "div"
+                );
 
-            card.className = "name-card";
+            card.className=
+                "name-card";
 
-            card.style.animationDelay =
-                `${index * 0.06}s`;
-
-
-            card.innerHTML = `
-
-                <div class="name-left">
-
-                    <div class="number">
-                        ${index + 1}
-                    </div>
-
-                    <div class="name-info">
-
-                        <div class="name">
-                            ${escapeHTML(name)}
-                        </div>
-
-                        <div class="country">
-                            ${label}
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <button
-                    class="copy-btn"
-                    type="button">
-
-                    Copy
-
-                </button>
-
-            `;
+            card.style.animationDelay=
+                `${index*.06}s`;
 
 
-            const copyButton =
-                card.querySelector(".copy-btn");
+            const left=
+                document.createElement(
+                    "div"
+                );
+
+            left.className="left";
 
 
-            copyButton.addEventListener(
-                "click",
-                ()=>{
-                    copyName(
-                        copyButton,
-                        name
-                    );
-                }
+            const number=
+                document.createElement(
+                    "div"
+                );
+
+            number.className=
+                "number";
+
+            number.textContent=
+                index+1;
+
+
+            const info=
+                document.createElement(
+                    "div"
+                );
+
+
+            const nameElement=
+                document.createElement(
+                    "div"
+                );
+
+            nameElement.className=
+                "name";
+
+            nameElement.textContent=
+                name;
+
+
+            const countryElement=
+                document.createElement(
+                    "div"
+                );
+
+            countryElement.className=
+                "country";
+
+            countryElement.textContent=
+                label;
+
+
+            info.append(
+                nameElement,
+                countryElement
             );
 
 
-            container.appendChild(card);
+            left.append(
+                number,
+                info
+            );
+
+
+            const copy=
+                document.createElement(
+                    "button"
+                );
+
+            copy.className=
+                "copy-btn";
+
+            copy.textContent=
+                "Copy";
+
+
+            copy.onclick=
+                async function(){
+
+                    try{
+
+                        await navigator
+                            .clipboard
+                            .writeText(name);
+
+                    }
+
+                    catch{
+
+                        const textarea=
+                            document.createElement(
+                                "textarea"
+                            );
+
+                        textarea.value=
+                            name;
+
+                        document.body
+                            .appendChild(
+                                textarea
+                            );
+
+                        textarea.select();
+
+                        document.execCommand(
+                            "copy"
+                        );
+
+                        textarea.remove();
+
+                    }
+
+
+                    copy.textContent=
+                        "✓ Copied";
+
+                    copy.classList.add(
+                        "copied"
+                    );
+
+
+                    setTimeout(
+                        function(){
+
+                            copy.textContent=
+                                "Copy";
+
+                            copy.classList.remove(
+                                "copied"
+                            );
+
+                        },
+                        1200
+                    );
+
+                };
+
+
+            card.append(
+                left,
+                copy
+            );
+
+
+            container.appendChild(
+                card
+            );
 
         }
     );
@@ -1137,193 +1206,93 @@ function generateNames(){
 }
 
 
-/* =====================================================
-   HTML ESCAPE
-===================================================== */
+/* =========================================
+   DARK / BRIGHT
+========================================= */
 
-function escapeHTML(text){
+function toggleTheme(){
 
-    const div =
-        document.createElement("div");
-
-    div.textContent = text;
-
-    return div.innerHTML;
-
-}
+    document.body.classList.toggle(
+        "dark"
+    );
 
 
-/* =====================================================
-   COPY
-===================================================== */
-
-function copyName(button,name){
-
-    if(
-        navigator.clipboard &&
-        window.isSecureContext
-    ){
-
-        navigator.clipboard
-            .writeText(name)
-            .then(
-                ()=>showCopied(button)
-            )
-            .catch(
-                ()=>fallbackCopy(
-                    button,
-                    name
-                )
-            );
-
-    }
-    else{
-
-        fallbackCopy(
-            button,
-            name
+    const dark=
+        document.body.classList.contains(
+            "dark"
         );
 
-    }
 
-}
-
-
-/* =====================================================
-   FALLBACK COPY
-===================================================== */
-
-function fallbackCopy(button,name){
-
-    const textarea =
-        document.createElement("textarea");
-
-    textarea.value = name;
-
-    textarea.style.position = "fixed";
-    textarea.style.left = "-9999px";
-
-    document.body.appendChild(textarea);
-
-    textarea.select();
+    const button=
+        document.getElementById(
+            "themeBtn"
+        );
 
 
-    try{
-
-        document.execCommand("copy");
-
-        showCopied(button);
-
-    }
-    catch(error){
-
-        button.textContent = "Select";
-
-    }
+    button.textContent=
+        dark
+        ? "☀️ Bright Mode"
+        : "🌙 Dark Mode";
 
 
-    document.body.removeChild(textarea);
-
-}
-
-
-/* =====================================================
-   COPIED
-===================================================== */
-
-function showCopied(button){
-
-    button.textContent = "✓ Copied";
-
-    button.classList.add("copied");
-
-
-    setTimeout(
-        ()=>{
-            button.textContent = "Copy";
-            button.classList.remove("copied");
-        },
-        1200
+    localStorage.setItem(
+        "theme",
+        dark
+        ? "dark"
+        : "bright"
     );
 
 }
 
 
-/* =====================================================
-   DARK / BRIGHT
-===================================================== */
-
-function toggleTheme(){
-
-    document.body.classList.toggle("dark");
-
-
-    const isDark =
-        document.body.classList.contains("dark");
-
-
-    const button =
-        document.getElementById("themeBtn");
-
-
-    if(isDark){
-
-        button.textContent =
-            "☀️ Bright Mode";
-
-        localStorage.setItem(
-            "theme",
-            "dark"
-        );
-
-    }
-    else{
-
-        button.textContent =
-            "🌙 Dark Mode";
-
-        localStorage.setItem(
-            "theme",
-            "bright"
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   LOAD SAVED THEME
-===================================================== */
+/* =========================================
+   LOAD THEME
+========================================= */
 
 if(
-    localStorage.getItem("theme") === "dark"
+    localStorage.getItem("theme")
+    ===
+    "dark"
 ){
 
-    document.body.classList.add("dark");
+    document.body.classList.add(
+        "dark"
+    );
 
-    document.getElementById("themeBtn")
-        .textContent =
+
+    document.getElementById(
+        "themeBtn"
+    ).textContent=
         "☀️ Bright Mode";
 
 }
 
 
-/* =====================================================
-   COUNTRY CHANGE
-===================================================== */
+/* =========================================
+   EVENTS
+========================================= */
+
+document
+    .getElementById("themeBtn")
+    .onclick=
+    toggleTheme;
+
+
+document
+    .getElementById("changeBtn")
+    .onclick=
+    generateNames;
+
 
 document
     .getElementById("country")
-    .addEventListener(
-        "change",
-        generateNames
-    );
+    .onchange=
+    generateNames;
 
 
-/* =====================================================
+/* =========================================
    START
-===================================================== */
+========================================= */
 
 generateNames();
 
